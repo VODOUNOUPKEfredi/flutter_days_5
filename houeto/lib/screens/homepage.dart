@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
-  
+   final List<Map<String, dynamic>> properties = [
+    {'type': 'Appartements', 'title': 'Appartement '},
+    {'type': 'Villas', 'title': 'Villa Nice'},
+    {'type': 'Boutiques', 'title': 'Boutique '},
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -38,14 +44,50 @@ class DashboardScreen extends StatelessWidget {
                   ],
          
                 ),  
-                
-                 ] 
-      
-            )
-            )    
-           )
-      )
+                 SizedBox(height: 10),
+                // Cartes statistiques
+                _buildStatsSection(context),
+                SizedBox(height: 20),
+                // Section des propriétés
+                  Text('Mes propriétés', 
+                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+
+                         SizedBox(height: 20),
+
+                   TabBar(
+                isScrollable: true,
+                labelColor: Colors.blue,
+                unselectedLabelColor: Colors.grey,
+                indicatorColor: Colors.blue,
+                  tabs: [
+                    Tab(text: 'Tous'),
+                    Tab(text: 'Villas'),
+                    Tab(text: 'Appartements'),
+                    Tab(text: 'Boutiques'),
+                  ],
+                ),
+
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  child: TabBarView(
+                    children: [
+                      _buildPropertyList('Tous'),
+                      _buildPropertyList('Villas'),
+                      _buildPropertyList('Appartements'),
+                      _buildPropertyList('Boutiques'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
+  }
+
+                
+                
  }
   Widget _buildStatsSection(BuildContext context) {
     return Column(
@@ -109,5 +151,36 @@ class DashboardScreen extends StatelessWidget {
       ),
     );
   }
+   Widget _buildPropertyList(String type) {
+    final filteredProperties = properties.where((p) => 
+      type == 'Tous' || p['type'] == type).toList();
 
-}
+    return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: filteredProperties.length,
+      itemBuilder: (context, index) {
+        return _buildPropertyItem(filteredProperties[index]);
+      },
+    );
+  }
+
+  Widget _buildPropertyItem(Map<String, dynamic> property) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 5),
+        ],
+      ),
+      child: ListTile(
+        leading: Icon(Icons.home, size: 40, color: Colors.blue),
+        title: Text(property['title'], 
+            style: TextStyle(fontWeight: FontWeight.bold)),
+        subtitle: Text('${property['price']} • ${property['size']}'),
+        trailing: Icon(Icons.chevron_right),
+      ),
+    );
+  }
+
