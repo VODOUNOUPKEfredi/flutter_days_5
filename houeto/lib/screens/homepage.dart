@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
-   final List<Map<String, dynamic>> properties = [
+  final List<Map<String, dynamic>> properties = [
     {'type': 'Appartements', 'title': 'Appartement '},
     {'type': 'Villas', 'title': 'Villa Nice'},
     {'type': 'Boutiques', 'title': 'Boutique '},
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +24,13 @@ class DashboardScreen extends StatelessWidget {
 
           
         ),
-           body: SingleChildScrollView (
+              drawer: _buildAppDrawer(context),
+        body: SingleChildScrollView (
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Section vue d'ensemble
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -42,9 +41,8 @@ class DashboardScreen extends StatelessWidget {
                       onPressed: () {},
                     ),
                   ],
-         
-                ),  
-                 SizedBox(height: 10),
+                ),
+                SizedBox(height: 10),
                 // Cartes statistiques
                 _buildStatsSection(context),
                 SizedBox(height: 20),
@@ -86,9 +84,6 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-                
-                
- }
   Widget _buildStatsSection(BuildContext context) {
     return Column(
       children: [
@@ -151,7 +146,8 @@ class DashboardScreen extends StatelessWidget {
       ),
     );
   }
-   Widget _buildPropertyList(String type) {
+
+  Widget _buildPropertyList(String type) {
     final filteredProperties = properties.where((p) => 
       type == 'Tous' || p['type'] == type).toList();
 
@@ -184,3 +180,58 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
+   Widget _buildAppDrawer(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 129, 194, 248),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  child: Icon(Icons.person, size: 40),
+                ),
+                SizedBox(height: 10),
+                Text('Jean', 
+                    style: TextStyle(color: Colors.white, fontSize: 18)),
+                Text('jean@gmail.com',
+                    style: TextStyle(color: Colors.white70)),
+              ],
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text('Profil'),
+            onTap: () {
+              // Navigation vers la page Profil
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Propriétés'),
+            onTap: () {
+              // Navigation vers la liste des propriétés
+              Navigator.pop(context);
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Paramètres'),
+            onTap: () {
+              // Navigation vers les paramètres
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+}
