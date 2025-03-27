@@ -60,18 +60,21 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:houeffa/pages/homePage.dart';
 import 'package:houeffa/pages/login_page.dart';
+import 'package:houeffa/pages/navBar.dart';
 import 'package:provider/provider.dart';
 import 'package:houeffa/provider/auth_provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(MyApp(
+  )
+);
 }
 
 class MyApp extends StatelessWidget {
@@ -109,6 +112,6 @@ class AuthWrapper extends StatelessWidget {
       );
     }
 
-    return authProvider.isAuthenticated ? LocataireHomePage() : LoginPage();
+    return authProvider.isAuthenticated ? Navbar() : LoginPage();
   }
 }

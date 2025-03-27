@@ -384,7 +384,7 @@ class _SignupPageState extends State<SignupPage> with SingleTickerProviderStateM
                                           behavior: SnackBarBehavior.floating,
                                         ),
                                       );
-                                      Navigator.pushReplacementNamed(context, '/HomePage');
+                                      Navigator.pushReplacementNamed(context, '/Navbar');
                                     } else if (mounted) {
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
