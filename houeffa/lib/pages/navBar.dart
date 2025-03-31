@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:houeffa/pages/favorite.dart';
+import 'package:houeffa/pages/historique_payement.dart';
 import 'package:houeffa/pages/message.dart';
 import 'package:houeffa/pages/proprietaire_page.dart';
 import 'package:houeffa/pages/profil_locataire.dart';
 import 'package:houeffa/pages/homePage.dart';
+import 'package:houeffa/pages/validation_logement.dart';
 
 class Navbar extends StatefulWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -21,9 +23,9 @@ class _NavbarState extends State<Navbar> {
   void initState() {
     super.initState();
     _pages = [
-       HomePage(), // Utilisez const si possible
-      const FavoritesPage(),
-       LogementSearchPage(), 
+       HistoriquePaiementsPage(), // Utilisez const si possible
+      const LogementValidationPage(),
+       HomePage(), 
       const MessagesPage(),
       const ProfilLocatairePage(),
     ];

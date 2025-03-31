@@ -181,7 +181,7 @@ class DetailLogementPage extends StatelessWidget {
           ),
           SizedBox(height: 8),
           Text(
-            logement.description,
+            logement.description??'Aucune description ',
             style: TextStyle(fontSize: 16),
           ),
         ],
