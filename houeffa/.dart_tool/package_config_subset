@@ -82,6 +82,10 @@ fixnum
 3.1
 file:///home/fredy/.pub-cache/hosted/pub.dev/fixnum-1.1.1/
 file:///home/fredy/.pub-cache/hosted/pub.dev/fixnum-1.1.1/lib/
+floating_bottom_navigation_bar
+2.12
+file:///home/fredy/.pub-cache/hosted/pub.dev/floating_bottom_navigation_bar-1.5.2/
+file:///home/fredy/.pub-cache/hosted/pub.dev/floating_bottom_navigation_bar-1.5.2/lib/
 flutter_lints
 3.5
 file:///home/fredy/.pub-cache/hosted/pub.dev/flutter_lints-5.0.0/
@@ -92,8 +96,8 @@ file:///home/fredy/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.
 file:///home/fredy/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.27/lib/
 geolocator
 3.5
-file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator-13.0.3/
-file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator-13.0.3/lib/
+file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator-13.0.4/
+file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator-13.0.4/lib/
 geolocator_android
 3.5
 file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator_android-4.6.2/
@@ -108,8 +112,8 @@ file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator_platform_interface-4.2.6
 file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator_platform_interface-4.2.6/lib/
 geolocator_web
 3.5
-file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator_web-4.1.2/
-file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator_web-4.1.2/lib/
+file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator_web-4.1.3/
+file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator_web-4.1.3/lib/
 geolocator_windows
 3.5
 file:///home/fredy/.pub-cache/hosted/pub.dev/geolocator_windows-0.2.5/
@@ -124,8 +128,8 @@ file:///home/fredy/.pub-cache/hosted/pub.dev/google_maps-8.1.1/
 file:///home/fredy/.pub-cache/hosted/pub.dev/google_maps-8.1.1/lib/
 google_maps_flutter
 3.6
-file:///home/fredy/.pub-cache/hosted/pub.dev/google_maps_flutter-2.11.0/
-file:///home/fredy/.pub-cache/hosted/pub.dev/google_maps_flutter-2.11.0/lib/
+file:///home/fredy/.pub-cache/hosted/pub.dev/google_maps_flutter-2.12.0/
+file:///home/fredy/.pub-cache/hosted/pub.dev/google_maps_flutter-2.12.0/lib/
 google_maps_flutter_android
 3.6
 file:///home/fredy/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.16.0/
@@ -220,8 +224,8 @@ file:///home/fredy/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8/
 file:///home/fredy/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8/lib/
 provider
 2.12
-file:///home/fredy/.pub-cache/hosted/pub.dev/provider-6.1.2/
-file:///home/fredy/.pub-cache/hosted/pub.dev/provider-6.1.2/lib/
+file:///home/fredy/.pub-cache/hosted/pub.dev/provider-6.1.4/
+file:///home/fredy/.pub-cache/hosted/pub.dev/provider-6.1.4/lib/
 sanitize_html
 2.12
 file:///home/fredy/.pub-cache/hosted/pub.dev/sanitize_html-2.1.0/
