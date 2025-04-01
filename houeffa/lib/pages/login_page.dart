@@ -390,7 +390,7 @@ class _LoginPageState extends State<LoginPage> {
                     }
                   },
                   icon: Image.asset(
-                    'assets/google_logo.png',
+                    'asset/google_logo.png',
                     height: 24,
                   ), 
                   label: const Text(

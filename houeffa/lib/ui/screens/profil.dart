@@ -1,4 +1,3 @@
-import '../common/navigation.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
@@ -101,7 +100,10 @@ class _ProfileState extends State<Profile> {
   Widget _buildLogoutButton() {
     return Center(
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          signOut();
+
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.blue[100],
           shape:
@@ -113,4 +115,11 @@ class _ProfileState extends State<Profile> {
       ),
     );
   }
+  
+  void signOut() {
+    signOut();
+  }
+  
+  
+ 
 }

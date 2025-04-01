@@ -44,6 +44,7 @@ dependencies:
   geolocator: ^13.0.3
   floating_bottom_navigation_bar: ^1.5.2
   firebase_auth: ^5.5.1
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
