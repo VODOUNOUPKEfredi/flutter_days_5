@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:houeffa/pages/dasboard.dart';
 import 'package:houeffa/pages/historique_payement.dart';
 import 'package:houeffa/pages/message.dart';
+import 'package:houeffa/pages/tchatPage.dart';
 import 'package:houeffa/pages/homePage.dart';
 import 'package:houeffa/pages/profil_locataire.dart';
 import 'package:houeffa/pages/validation_logement.dart';
-import 'package:houeffa/ui/screens/profil.dart';
 
 class Navbar extends StatefulWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -15,17 +16,19 @@ class Navbar extends StatefulWidget {
 
 class _NavbarState extends State<Navbar> {
   int _selectedIndex = 0;
-  
+
   late List<Widget> _pages;
 
   @override
   void initState() {
     super.initState();
     _pages = [
-       HomePage(), 
+      DashboardPage(),
+
+      HomePage(),
       const LogementValidationPage(),
-       HistoriquePaiementsPage(), 
-      const MessagesPage(),
+      const HistoriquePaiementsPage(),
+      const MessagePage(), // Ajout du const
       const ProfilLocatairePage(),
     ];
   }
@@ -50,10 +53,9 @@ class _NavbarState extends State<Navbar> {
           borderRadius: BorderRadius.circular(30),
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
+               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+              BottomNavigationBarItem(icon: Icon(Icons.details), label: 'page'),
+
               BottomNavigationBarItem(
                 icon: Icon(Icons.favorite_border),
                 label: 'Favorites',

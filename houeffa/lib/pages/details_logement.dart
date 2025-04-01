@@ -1,246 +1,13 @@
-// import 'package:flutter/material.dart';
-// import 'package:carousel_slider/carousel_slider.dart';
-// import 'package:houeffa/models/logement_modele.dart';
-// // import 'package:houeffa/pages/details_logement.dart' as detailsPage;
 
-// class DetailLogementPage extends StatelessWidget {
-//   final Logement logement;
-
-//   const DetailLogementPage({Key? key, required this.logement}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(logement.titre),
-//       ),
-//       body: SingleChildScrollView(
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             // Carousel d'images
-//             _construireCarouselImages(),
-
-//             // Informations principales
-//             Padding(
-//               padding: const EdgeInsets.all(16.0),
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   Text(
-//                     logement.titre,
-//                     style: Theme.of(context).textTheme.headlineSmall,
-//                   ),
-//                   SizedBox(height: 8),
-//                   Text(
-//                     '${logement.prixMensuel.toStringAsFixed(0)} € / mois',
-//                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-//                           color: Colors.green,
-//                           fontWeight: FontWeight.bold,
-//                         ),
-//                   ),
-//                   SizedBox(height: 8),
-//                   Text(
-//                     logement.adresse,
-//                     style: Theme.of(context).textTheme.titleMedium,
-//                   ),
-//                 ],
-//               ),
-//             ),
-
-//             // Détails du logement
-//             _construireSectionDetails(),
-
-//             // Description
-//             _construireSectionDescription(),
-
-//             // Caractéristiques
-//             _construireSectionCaracteristiques(),
-//           ],
-//         ),
-//       ),
-//       // Bouton de contact ou de réservation
-//       bottomNavigationBar: _construireBoutonContact(context),
-//     );
-//   }
-
-//   Widget _construireCarouselImages() {
-//     // Si pas d'images, afficher une image par défaut
-//     if (logement.images.isEmpty) {
-//       return Container(
-//         height: 250,
-//         color: Colors.grey[300],
-//         child: Center(
-//           child: Icon(
-//             Icons.image_not_supported,
-//             size: 100,
-//             color: Colors.grey[600],
-//           ),
-//         ),
-//       );
-//     }
-
-//     return CarouselSlider(
-//       options: CarouselOptions(
-//         height: 250.0,
-//         viewportFraction: 1.0,
-//         enlargeCenterPage: false,
-//         autoPlay: true,
-//       ),
-//       items: logement.images.map((image) {
-//         return Builder(
-//           builder: (BuildContext context) {
-//             return Image.asset(
-//               image,
-//               fit: BoxFit.cover,
-//               width: double.infinity,
-//             );
-//           },
-//         );
-//       }).toList(),
-//     );
-//   }
-
-//   Widget _construireSectionDetails() {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-//       child: Card(
-//         child: Padding(
-//           padding: const EdgeInsets.all(16.0),
-//           child: Column(
-//             children: [
-//               _construireLigneDetail(
-//                 Icons.home_outlined,
-//                 'Type de logement',
-//                 logement.typeLogement,
-//               ),
-//               Divider(),
-//               _construireLigneDetail(
-//                 Icons.aspect_ratio,
-//                 'Superficie',
-//                 '${logement.superficie} m²',
-//               ),
-//               Divider(),
-//               _construireLigneDetail(
-//                 Icons.bed_outlined,
-//                 'Chambres',
-//                 '${logement.nombreChambres}',
-//               ),
-//               Divider(),
-//               _construireLigneDetail(
-//                 Icons.bathroom_outlined,
-//                 'Salles de bain',
-//                 '${logement.nombreSallesBain}',
-//               ),
-//               Divider(),
-//               _construireLigneDetail(
-//                 Icons.chair_outlined,
-//                 'Meublé',
-//                 logement.meuble ? 'Oui' : 'Non',
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-
-//   Widget _construireLigneDetail(IconData icone, String titre, String valeur) {
-//     return Row(
-//       children: [
-//         Icon(icone, color: Colors.blue),
-//         SizedBox(width: 16),
-//         Expanded(
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Text(
-//                 titre,
-//                 style: TextStyle(fontWeight: FontWeight.bold),
-//               ),
-//               Text(valeur),
-//             ],
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-
-//   Widget _construireSectionDescription() {
-//     return Padding(
-//       padding: const EdgeInsets.all(16.0),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Text(
-//             'Description',
-//             style: TextStyle(
-//               fontSize: 18,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//           SizedBox(height: 8),
-//           Text(
-//             logement.description??'Aucune description ',
-//             style: TextStyle(fontSize: 16),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
-//   Widget _construireSectionCaracteristiques() {
-//     return Padding(
-//       padding: const EdgeInsets.all(16.0),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Text(
-//             'Caractéristiques',
-//             style: TextStyle(
-//               fontSize: 18,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//           SizedBox(height: 8),
-//           Wrap(
-//             spacing: 8,
-//             runSpacing: 8,
-//             children: logement.caracteristiques.map((caracteristique) {
-//               return Chip(
-//                 label: Text(caracteristique),
-//                 backgroundColor: Colors.blue.shade50,
-//               );
-//             }).toList(),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
-//   Widget _construireBoutonContact(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.all(16.0),
-//       child: ElevatedButton(
-//         onPressed: () {
-//           // TODO: Implémenter la logique de contact ou de réservation
-//           ScaffoldMessenger.of(context).showSnackBar(
-//             SnackBar(content: Text('Contactez le propriétaire')),
-//           );
-//         },
-//         style: ElevatedButton.styleFrom(
-//           minimumSize: Size(double.infinity, 50),
-//         ),
-//         child: Text('Contacter le propriétaire'),
-//       ),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
 import 'package:houeffa/models/logement_modele.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:houeffa/pages/tchatPage.dart';
+import 'package:houeffa/provider/auth_provider.dart' show AuthProvider;
+import 'package:houeffa/services/discussion_service.dart';
+import 'package:houeffa/services/notification%20service.dart';
+import 'package:provider/provider.dart';
 
 class DetailLogementPage extends StatefulWidget {
   final Logement logement;
@@ -253,9 +20,18 @@ class DetailLogementPage extends StatefulWidget {
 
 class _DetailLogementPageState extends State<DetailLogementPage> {
   int _currentImageIndex = 0;
+  bool _isLoading = false;
   
-  // Supprimez la ligne problématique du contrôleur
-  // final CarouselController _carouselController = CarouselController();
+  // Ajout des services
+  late NotificationService _notificationService;
+  late ChatService _chatService;
+
+  @override
+  void initState() {
+    super.initState();
+    _notificationService = NotificationService();
+    _chatService = ChatService();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -304,8 +80,6 @@ class _DetailLogementPageState extends State<DetailLogementPage> {
     return Stack(
       children: [
         CarouselSlider(
-          // Supprimez la référence au contrôleur
-          // carouselController: _carouselController,
           options: CarouselOptions(
             height: 250,
             viewportFraction: 1.0,
@@ -630,33 +404,125 @@ class _DetailLogementPageState extends State<DetailLogementPage> {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          onPressed: () {
-            _contactOwner();
-          },
-          child: Text(
-            'Contacter',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          onPressed: _isLoading ? null : _contactOwner,
+          child: _isLoading 
+            ? SizedBox(
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+              )
+            : Text(
+                'Contacter',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
         ),
       ),
     );
   }
 
-  void _contactOwner() {
-    // Implement contact functionality here
-    // This could open a chat screen, launch a phone call, etc.
+  // Méthode corrigée pour contacter le propriétaire
+  Future<void> _contactOwner() async {
+    // Récupérer l'utilisateur actuel
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final currentUser = authProvider.currentUser;
+    
+    if (currentUser == null) {
+      // L'utilisateur n'est pas connecté
+      _showLoginDialog();
+      return;
+    }
+    
+    // Extraction de l'ID utilisateur à partir de l'objet UserModel
+    final currentUserId = currentUser.uid; // ou currentUser.id selon votre modèle
+    
+    // Vérification de la présence des IDs nécessaires
+    if (widget.logement.id == null || widget.logement.proprietaireId == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Informations de logement incomplètes')),
+      );
+      return;
+    }
+    
+    final logementId = widget.logement.id!;
+    final proprietaireId = widget.logement.proprietaireId!;
+    
+    // Vérifier si l'utilisateur est le propriétaire du logement
+    if (currentUserId == proprietaireId) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Vous êtes le propriétaire de ce logement')),
+      );
+      return;
+    }
+    
+    setState(() {
+      _isLoading = true;
+    });
+    
+    try {
+      // 1. Créer ou récupérer une discussion existante
+      final chatId = await _chatService.createOrGetChat(
+        currentUserId: currentUserId,
+        proprietaireId: proprietaireId,
+        logementId: logementId,
+      );
+      
+      // 2. Envoyer une notification push au propriétaire
+      await _notificationService.sendPushNotification(
+        userId: proprietaireId,
+        title: 'Nouveau message',
+        body: 'Quelqu\'un s\'intéresse à votre logement "${widget.logement.titre}"',
+        data: {
+          'type': 'chat',
+          'chatId': chatId,
+          'logementId': logementId,
+        },
+      );
+      
+      // 3. Naviguer vers la page de chat
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ChatPage(
+            chatId: chatId,
+            logement: widget.logement,
+          ),
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erreur: Impossible de contacter le propriétaire')),
+      );
+      print('Error contacting owner: $e');
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+  }
+  
+  void _showLoginDialog() {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Contacter le propriétaire'),
-        content: Text('Cette fonctionnalité sera bientôt disponible.'),
+        title: Text('Connexion requise'),
+        content: Text('Vous devez être connecté pour contacter un propriétaire.'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('OK'),
+            child: Text('Annuler'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              // Naviguer vers la page de connexion
+              Navigator.pushNamed(context, '/login');
+            },
+            child: Text('Se connecter'),
           ),
         ],
       ),
