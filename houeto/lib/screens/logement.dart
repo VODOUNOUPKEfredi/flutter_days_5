@@ -17,6 +17,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Belle villa moderne avec vue panoramique',
     'caracteristiques': ['Piscine', 'Jardin', 'Terrasse', 'Garage'],
     'images': ['assets/Villa1.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
   {
     'titre': 'Golden Villa',
@@ -32,6 +34,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Villa moderne avec belle vue sur la plage',
     'caracteristiques': ['Jardin', 'Balcon', 'Proche plage'],
     'images': ['assets/Villa2.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
 
   {
@@ -48,6 +52,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Grande villa de luxe avec équipements haut de gamme',
     'caracteristiques': ['Piscine', 'Cuisine équipée', 'Chambre staff'],
     'images': ['assets/Villa3.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
 
   {
@@ -65,6 +71,8 @@ List<Map<String, dynamic>> logements = [
         'Charmante villa dans un quartier calme, idéale pour une famille.',
     'caracteristiques': ['Jardin', 'Terrasse', 'Sécurité 24h/24'],
     'images': ['assets/Villa4.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
 
   {
@@ -81,6 +89,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Appartement lumineux et moderne',
     'caracteristiques': ['Balcon', 'Cuisine équipée'],
     'images': ['assets/Appart1.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
   {
     'titre': 'Appartement B',
@@ -96,6 +106,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Petit appartement idéal pour célibataire',
     'caracteristiques': ['Proche Commissariat', 'Calme'],
     'images': ['assets/Appart2.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
 
   {
@@ -112,6 +124,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Appartement meublé à 5min de la plage, idéal pour famille.',
     'caracteristiques': ['Climatisation', 'Connexion WiFi', 'Balcon'],
     'images': ['assets/Appart3.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
 
   {
@@ -128,6 +142,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Appartement moderne dans immeuble sécurisé avec parking.',
     'caracteristiques': ['Compteur personnel', 'Calme', 'Sécurité'],
     'images': ['assets/Appart4.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
   {
     'titre': 'Boutique Commerce',
@@ -143,6 +159,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Local commercial bien situé',
     'caracteristiques': ['Vitrine', 'Arrière-boutique'],
     'images': ['assets/Bout1.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
   {
     'titre': 'Boutique Centre Commercial',
@@ -158,6 +176,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Emplacement visible dans un centre commercial',
     'caracteristiques': ['Grande vitrine', 'Haute visibilité'],
     'images': ['assets/Bout2.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
 
   {
@@ -174,6 +194,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Boutique spacieuse dans zone de grand marché.',
     'caracteristiques': ['Zone animée', 'Sécurité assurée'],
     'images': ['assets/Bout3.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
 
   {
@@ -190,6 +212,8 @@ List<Map<String, dynamic>> logements = [
     'description': 'Boutique spacieuse dans zone de grand marché.',
     'caracteristiques': ['Zone animée', 'Sécurité assurée'],
     'images': ['assets/Bout4.jpg'],
+    'latitude': 6.3702, 
+    'longitude': 2.3912,
   },
 ];
 
@@ -211,6 +235,8 @@ class Logement {
   final DateTime dateDisponibilite;
   final List<String>? caracteristiques;
   final List<String>? images;
+  final double? latitude;
+  final double? longitude;
 
   Logement({
     this.id,
@@ -230,11 +256,27 @@ class Logement {
     required this.dateDisponibilite,
     this.caracteristiques,
     this.images,
+    this.latitude,
+    this.longitude,
   });
 
   // Conversion depuis Firestore
   factory Logement.fromFirestore(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+     double latitude;
+     double longitude;
+
+     if (data['latitude'] != null) {
+      // Conversion en double si nécessaire
+      latitude = data['latitude'] is double ? data['latitude'] : double.tryParse(data['latitude'].toString());
+    }
+    
+    if (data['longitude'] != null) {
+      // Conversion en double si nécessaire
+      longitude = data['longitude'] is double ? data['longitude'] : double.tryParse(data['longitude'].toString());
+    }
+
+
     return Logement(
       id: doc.id,
       idProprietaire: data['idProprietaire'],
@@ -253,6 +295,8 @@ class Logement {
       dateDisponibilite: (data['dateDisponibilite'] as Timestamp).toDate(),
       caracteristiques: List<String>.from(data['caracteristiques'] ?? []),
       images: List<String>.from(data['images'] ?? []),
+      latitude: data['latitude'],
+      longitude: data['longitude'],
     );
   }
 
@@ -275,6 +319,8 @@ class Logement {
       'dateDisponibilite': Timestamp.fromDate(dateDisponibilite),
       'caracteristiques': caracteristiques,
       'images': images,
+       'latitude': latitude,
+       'longitude': longitude
     };
   }
 }
@@ -383,6 +429,8 @@ class _LogementScreenFirestoreState extends State<LogementScreenFirestore> {
       images: List<String>.from(logementData['images']),
       datePublication: DateTime.now(),
       dateDisponibilite: DateTime.now().add(Duration(days: 30)),
+      latitude: logementData['latitude'],
+      longitude: logementData['longitude'],
     );
 
     try {
@@ -393,6 +441,12 @@ class _LogementScreenFirestoreState extends State<LogementScreenFirestore> {
       throw e; // Relancer l'erreur pour la gestion côté appelant
     }
   }
+}
+   Future<void> ajouterCoordonnees(String logementId, double latitude, double longitude) async {
+  await FirebaseFirestore.instance.collection('logements').doc(logementId).update({
+    'latitude': latitude,
+    'longitude': longitude,
+  });
 }
 
   @override
@@ -464,7 +518,7 @@ class _LogementScreenFirestoreState extends State<LogementScreenFirestore> {
                             Text(
                               '${logement.typeLogement} - ${logement.superficie}m²',
                             ),
-                            Text('${logement.prixMensuel}€/mois'),
+                            Text('${logement.prixMensuel}FCFA/mois'),
                             Text('Adresse: ${logement.adresse}'),
                           ],
                         ),

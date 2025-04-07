@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:houeto/firebase_options.dart';
 import 'package:houeto/screens/login.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       
-      home: LoginPage(title: '',)
+      home:LoginPage(title: '',)
     );
   }
    }
