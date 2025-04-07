@@ -584,7 +584,7 @@ class _LogementScreenFirestoreState extends State<LogementScreenFirestore> {
         SnackBar(content: Text('Erreur lors de la modification: $e')),
       );
     }
-  }
+   }
 
   // Méthode pour supprimer un logement
   void _supprimerLogement(String id) async {
