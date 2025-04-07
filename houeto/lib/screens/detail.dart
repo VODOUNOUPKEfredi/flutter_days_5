@@ -290,7 +290,7 @@ class LogementDetailsPage extends StatelessWidget {
                           runSpacing: 8,
                           children:
                               logement.caracteristiques!
-                                  .map(
+                                  .map( 
                                     (c) => Chip(
                                       label: Text(c),
                                       backgroundColor: Colors.blue[50],
