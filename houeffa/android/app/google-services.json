@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "508280862192",
+    "project_id": "houeffa-houeto-dclic",
+    "storage_bucket": "houeffa-houeto-dclic.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508280862192:android:8aad949956263825a15935",
+        "android_client_info": {
+          "package_name": "com.example.houeffa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508280862192-q58agqsafido5fi09mt197l40lu3r6ne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.houeffa",
+            "certificate_hash": "82e73bffad44c937ee9751f220f8c8a636821e5f"
+          }
+        },
+        {
+          "client_id": "508280862192-odp1c720ajij2be1mtoqipe9jsaparsv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKWmgkJ3XKGlHtKDmHomFp6bXymEuisGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508280862192-odp1c720ajij2be1mtoqipe9jsaparsv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "508280862192-7olmis1o9geapoerr4e8l6u12procg2u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.houeffa"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508280862192:android:d3656d8d8083b418a15935",
+        "android_client_info": {
+          "package_name": "com.example.houeto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508280862192-odp1c720ajij2be1mtoqipe9jsaparsv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKWmgkJ3XKGlHtKDmHomFp6bXymEuisGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508280862192-odp1c720ajij2be1mtoqipe9jsaparsv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "508280862192-7olmis1o9geapoerr4e8l6u12procg2u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.houeffa"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

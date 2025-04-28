@@ -31,8 +31,43 @@
 
   <title>houeffa</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Forcer le rendu HTML -->
+  <script>
+    window.flutterWebRenderer = "html";
+  </script>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js"></script>
+  
+  <!-- Remplacez ces valeurs par vos propres valeurs de configuration Firebase -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "VOTRE_API_KEY",
+      authDomain: "VOTRE_AUTH_DOMAIN",
+      projectId: "VOTRE_PROJECT_ID",
+      storageBucket: "VOTRE_STORAGE_BUCKET",
+      messagingSenderId: "VOTRE_MESSAGING_SENDER_ID",
+      appId: "VOTRE_APP_ID"
+    };
+    
+    // Initialiser Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <!-- Ce script permet le chargement de Flutter en mode compatible avec Firebase -->
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Téléchargement du framework Flutter principal
+      var script = document.createElement('script');
+      script.src = "flutter_bootstrap.js";
+      script.type = "application/javascript";
+      document.body.appendChild(script);
+    });
+  </script>
 </body>
 </html>
