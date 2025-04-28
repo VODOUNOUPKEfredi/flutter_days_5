@@ -80,6 +80,12 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "equatable",
+      "rootUri": "file:///home/fredy/.pub-cache/hosted/pub.dev/equatable-2.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///home/fredy/.pub-cache/hosted/pub.dev/fake_async-1.3.2",
       "packageUri": "lib/",
@@ -144,6 +150,12 @@
       "rootUri": "file:///home/fredy/.pub-cache/hosted/pub.dev/fixnum-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.1"
+    },
+    {
+      "name": "fl_chart",
+      "rootUri": "file:///home/fredy/.pub-cache/hosted/pub.dev/fl_chart-0.71.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
     },
     {
       "name": "floating_bottom_navigation_bar",
@@ -524,7 +536,7 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-04-01T11:55:32.148866Z",
+  "generated": "2025-04-28T17:43:12.551478Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
   "flutterRoot": "file:///home/fredy/development/flutter",

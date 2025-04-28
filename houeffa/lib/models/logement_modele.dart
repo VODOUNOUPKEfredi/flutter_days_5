@@ -68,6 +68,8 @@ class Logement {
 
   get longitude => null;
 
+  bool get disponible => true;
+
   Map<String, dynamic> toFirestore() {
     return {
       'titre': titre,
